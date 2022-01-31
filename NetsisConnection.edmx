@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NetsisModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="AYK_KIMLIK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CARI_EKLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CARI_KOD" Type="varchar" Mode="In" />
+          <Parameter Name="CARI_TEL" Type="varchar" Mode="In" />
+          <Parameter Name="CARI_IL" Type="varchar" Mode="In" />
+          <Parameter Name="CARI_ISIM" Type="varchar" Mode="In" />
+          <Parameter Name="CARI_ADRES" Type="varchar" Mode="In" />
+          <Parameter Name="CARI_ILCE" Type="varchar" Mode="In" />
+          <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+          <Parameter Name="TCNO" Type="varchar" Mode="In" />
+          <Parameter Name="KAYITYAPANKUL" Type="varchar" Mode="In" />
+          <Parameter Name="KAYITTARIHI" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="STOK_AL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ST_KOD" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="STOK_AL_CINS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CINS" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="STOK_DUS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ST_KOD" Type="varchar" Mode="In" />
+          <Parameter Name="ADET" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="STOK_RAPOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="NetsisModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NetsisModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="NetsisEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="STOK_RAPOR" ReturnType="Collection(NetsisModel.STOK_RAPOR_Result)" />
+          <FunctionImport Name="AYK_KIMLIK" ReturnType="Collection(NetsisModel.AYK_KIMLIK_Result)" />
+          <FunctionImport Name="STOK_AL" ReturnType="Collection(NetsisModel.STOK_AL_Result)">
+          <Parameter Name="ST_KOD" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="STOK_AL_CINS" ReturnType="Collection(NetsisModel.STOK_AL_CINS_Result)">
+          <Parameter Name="CINS" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="STOK_DUS" ReturnType="Collection(NetsisModel.STOK_DUS_Result)">
+            <Parameter Name="ST_KOD" Mode="In" Type="String" />
+            <Parameter Name="ADET" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="CARI_EKLE" ReturnType="Collection(NetsisModel.CARI_EKLE_Result)">
+            <Parameter Name="CARI_KOD" Mode="In" Type="String" />
+            <Parameter Name="CARI_TEL" Mode="In" Type="String" />
+            <Parameter Name="CARI_IL" Mode="In" Type="String" />
+            <Parameter Name="CARI_ISIM" Mode="In" Type="String" />
+            <Parameter Name="CARI_ADRES" Mode="In" Type="String" />
+            <Parameter Name="CARI_ILCE" Mode="In" Type="String" />
+            <Parameter Name="EMAIL" Mode="In" Type="String" />
+            <Parameter Name="TCNO" Mode="In" Type="String" />
+            <Parameter Name="KAYITYAPANKUL" Mode="In" Type="String" />
+            <Parameter Name="KAYITTARIHI" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="AYK_KIMLIK_Result">
+          <Property Type="String" Name="GRKOD" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="STOK_KODU" Nullable="false" MaxLength="35" />
+          <Property Type="String" Name="STOK_ADI" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="KOD1" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="KOD2" Nullable="true" MaxLength="8" />
+        </ComplexType>
+        <ComplexType Name="STOK_AL_Result">
+          <Property Type="String" Name="STOK_KODU" Nullable="false" MaxLength="35" />
+          <Property Type="String" Name="STOK_ADI" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CINSIYET_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="CINSIYET" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="ST_GRUP_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="ST_GRUP" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="YAS_ARALIK_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="YAS_ARALIK" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="RENK" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NUMARA" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MALZEME_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="MALZEME" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="MALZEME_2" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MALZEME_OZ" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DOKU" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TIP_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="TIP" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="TIP_2_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="TIP_2" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="ALIS_FIYATI" Nullable="true" Precision="28" Scale="8" />
+          <Property Type="Decimal" Name="BAKIYE" Nullable="true" Precision="29" Scale="8" />
+          <Property Type="Decimal" Name="SATIS_FIYATI" Nullable="true" Precision="28" Scale="8" />
+        </ComplexType>
+        <ComplexType Name="STOK_RAPOR_Result">
+          <Property Type="String" Name="STOK_KODU" Nullable="false" MaxLength="35" />
+          <Property Type="String" Name="STOK_ADI" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CINSIYET_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="CINSIYET" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="ST_GRUP_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="ST_GRUP" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="YAS_ARALIK_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="YAS_ARALIK" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="RENK" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NUMARA" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MALZEME_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="MALZEME" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="MALZEME_2" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MALZEME_OZ" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DOKU" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TIP_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="TIP" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="TIP_2_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="TIP_2" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="ALIS_FIYATI" Nullable="true" Precision="28" Scale="8" />
+          <Property Type="Decimal" Name="BAKIYE" Nullable="true" Precision="29" Scale="8" />
+          <Property Type="Decimal" Name="SATIS_FIYATI" Nullable="true" Precision="28" Scale="8" />
+        </ComplexType>
+        <ComplexType Name="STOK_DUS_Result">
+          <Property Type="String" Name="STOK_KODU" Nullable="false" MaxLength="35" />
+          <Property Type="String" Name="STOK_ADI" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CINSIYET_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="CINSIYET" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="ST_GRUP_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="ST_GRUP" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="YAS_ARALIK_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="YAS_ARALIK" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="RENK" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NUMARA" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MALZEME_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="MALZEME" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="MALZEME_2" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MALZEME_OZ" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DOKU" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TIP_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="TIP" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="TIP_2_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="TIP_2" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="ALIS_FIYATI" Nullable="true" Precision="28" Scale="8" />
+          <Property Type="Decimal" Name="BAKIYE" Nullable="true" Precision="29" Scale="8" />
+          <Property Type="Decimal" Name="SATIS_FIYATI" Nullable="true" Precision="28" Scale="8" />
+        </ComplexType>
+        <ComplexType Name="STOK_AL_CINS_Result">
+          <Property Type="String" Name="STOK_KODU" Nullable="false" MaxLength="35" />
+          <Property Type="String" Name="STOK_ADI" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CINSIYET_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="CINSIYET" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="ST_GRUP_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="ST_GRUP" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="YAS_ARALIK_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="YAS_ARALIK" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="RENK" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NUMARA" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MALZEME_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="MALZEME" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="MALZEME_2" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MALZEME_OZ" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DOKU" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TIP_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="TIP" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="TIP_2_KOD" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="TIP_2" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="ALIS_FIYATI" Nullable="true" Precision="28" Scale="8" />
+          <Property Type="Decimal" Name="BAKIYE" Nullable="true" Precision="29" Scale="8" />
+          <Property Type="Decimal" Name="SATIS_FIYATI" Nullable="true" Precision="28" Scale="8" />
+        </ComplexType>
+        <ComplexType Name="CARI_EKLE_Result">
+          <Property Type="Int16" Name="SUBE_KODU" Nullable="false" />
+          <Property Type="Int16" Name="ISLETME_KODU" Nullable="false" />
+          <Property Type="String" Name="CARI_KOD" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="CARI_TEL" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CARI_IL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ULKE_KODU" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="CARI_ISIM" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CARI_TIP" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="GRUP_KODU" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="RAPOR_KODU1" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="RAPOR_KODU2" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="RAPOR_KODU3" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="RAPOR_KODU4" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="RAPOR_KODU5" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="CARI_ADRES" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CARI_ILCE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VERGI_DAIRESI" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VERGI_NUMARASI" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="FAX" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="POSTAKODU" Nullable="true" MaxLength="8" />
+          <Property Type="Int16" Name="DETAY_KODU" Nullable="true" />
+          <Property Type="Decimal" Name="NAKLIYE_KATSAYISI" Nullable="true" Precision="28" Scale="8" />
+          <Property Type="Decimal" Name="RISK_SINIRI" Nullable="true" Precision="28" Scale="8" />
+          <Property Type="Decimal" Name="TEMINATI" Nullable="true" Precision="28" Scale="8" />
+          <Property Type="Decimal" Name="CARISK" Nullable="true" Precision="28" Scale="8" />
+          <Property Type="Decimal" Name="CCRISK" Nullable="true" Precision="28" Scale="8" />
+          <Property Type="Decimal" Name="SARISK" Nullable="true" Precision="28" Scale="8" />
+          <Property Type="Decimal" Name="SCRISK" Nullable="true" Precision="28" Scale="8" />
+          <Property Type="Decimal" Name="CM_BORCT" Nullable="true" Precision="28" Scale="8" />
+          <Property Type="Decimal" Name="CM_ALACT" Nullable="true" Precision="28" Scale="8" />
+          <Property Type="DateTime" Name="CM_RAP_TARIH" Nullable="true" Precision="23" />
+          <Property Type="String" Name="KOSULKODU" Nullable="true" MaxLength="8" />
+          <Property Type="Decimal" Name="ISKONTO_ORANI" Nullable="true" Precision="28" Scale="8" />
+          <Property Type="Int16" Name="VADE_GUNU" Nullable="true" />
+          <Property Type="Byte" Name="LISTE_FIATI" Nullable="true" />
+          <Property Type="String" Name="ACIK1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ACIK2" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ACIK3" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="M_KOD" Nullable="true" MaxLength="35" />
+          <Property Type="Byte" Name="DOVIZ_TIPI" Nullable="true" />
+          <Property Type="Byte" Name="DOVIZ_TURU" Nullable="true" />
+          <Property Type="String" Name="HESAPTUTMASEKLI" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="DOVIZLIMI" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="UPDATE_KODU" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="PLASIYER_KODU" Nullable="true" MaxLength="8" />
+          <Property Type="Int16" Name="LOKALDEPO" Nullable="true" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="WEB" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="KURFARKIBORC" Nullable="true" MaxLength="35" />
+          <Property Type="String" Name="KURFARKIALAC" Nullable="true" MaxLength="35" />
+          <Property Type="String" Name="S_YEDEK1" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="S_YEDEK2" Nullable="true" MaxLength="8" />
+          <Property Type="Decimal" Name="F_YEDEK1" Nullable="true" Precision="28" Scale="8" />
+          <Property Type="Decimal" Name="F_YEDEK2" Nullable="true" Precision="28" Scale="8" />
+          <Property Type="String" Name="C_YEDEK1" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="C_YEDEK2" Nullable="true" MaxLength="1" />
+          <Property Type="Byte" Name="B_YEDEK1" Nullable="true" />
+          <Property Type="Int16" Name="I_YEDEK1" Nullable="true" />
+          <Property Type="Int32" Name="L_YEDEK1" Nullable="true" />
+          <Property Type="String" Name="FIYATGRUBU" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="KAYITYAPANKUL" Nullable="true" MaxLength="12" />
+          <Property Type="DateTime" Name="KAYITTARIHI" Nullable="true" Precision="23" />
+          <Property Type="String" Name="DUZELTMEYAPANKUL" Nullable="true" MaxLength="12" />
+          <Property Type="DateTime" Name="DUZELTMETARIHI" Nullable="true" Precision="23" />
+          <Property Type="Byte" Name="ODEMETIPI" Nullable="true" />
+          <Property Type="String" Name="ONAYTIPI" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="ONAYNUM" Nullable="true" />
+          <Property Type="String" Name="MUSTERIBAZIKDV" Nullable="true" MaxLength="1" />
+          <Property Type="Decimal" Name="AGIRLIK_ISK" Nullable="true" Precision="28" Scale="8" />
+          <Property Type="String" Name="CARI_TEL2" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CARI_TEL3" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="FAX2" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="GSM1" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="GSM2" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="GEKAPHESAPLANMASIN" Nullable="true" MaxLength="1" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NetsisModelStoreContainer" CdmEntityContainer="NetsisEntities">
+          <FunctionImportMapping FunctionImportName="STOK_RAPOR" FunctionName="NetsisModel.Store.STOK_RAPOR">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NetsisModel.STOK_RAPOR_Result">
+                <ScalarProperty Name="STOK_KODU" ColumnName="STOK_KODU" />
+                <ScalarProperty Name="STOK_ADI" ColumnName="STOK_ADI" />
+                <ScalarProperty Name="CINSIYET_KOD" ColumnName="CINSIYET_KOD" />
+                <ScalarProperty Name="CINSIYET" ColumnName="CINSIYET" />
+                <ScalarProperty Name="ST_GRUP_KOD" ColumnName="ST_GRUP_KOD" />
+                <ScalarProperty Name="ST_GRUP" ColumnName="ST_GRUP" />
+                <ScalarProperty Name="YAS_ARALIK_KOD" ColumnName="YAS_ARALIK_KOD" />
+                <ScalarProperty Name="YAS_ARALIK" ColumnName="YAS_ARALIK" />
+                <ScalarProperty Name="RENK" ColumnName="RENK" />
+                <ScalarProperty Name="NUMARA" ColumnName="NUMARA" />
+                <ScalarProperty Name="MALZEME_KOD" ColumnName="MALZEME_KOD" />
+                <ScalarProperty Name="MALZEME" ColumnName="MALZEME" />
+                <ScalarProperty Name="MALZEME_2" ColumnName="MALZEME_2" />
+                <ScalarProperty Name="MALZEME_OZ" ColumnName="MALZEME_OZ" />
+                <ScalarProperty Name="DOKU" ColumnName="DOKU" />
+                <ScalarProperty Name="TIP_KOD" ColumnName="TIP_KOD" />
+                <ScalarProperty Name="TIP" ColumnName="TIP" />
+                <ScalarProperty Name="TIP_2_KOD" ColumnName="TIP_2_KOD" />
+                <ScalarProperty Name="TIP_2" ColumnName="TIP_2" />
+                <ScalarProperty Name="ALIS_FIYATI" ColumnName="ALIS_FIYATI" />
+                <ScalarProperty Name="BAKIYE" ColumnName="BAKIYE" />
+                <ScalarProperty Name="SATIS_FIYATI" ColumnName="SATIS_FIYATI" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AYK_KIMLIK" FunctionName="NetsisModel.Store.AYK_KIMLIK">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NetsisModel.AYK_KIMLIK_Result">
+                <ScalarProperty Name="GRKOD" ColumnName="GRKOD" />
+                <ScalarProperty Name="STOK_KODU" ColumnName="STOK_KODU" />
+                <ScalarProperty Name="STOK_ADI" ColumnName="STOK_ADI" />
+                <ScalarProperty Name="KOD1" ColumnName="KOD1" />
+                <ScalarProperty Name="KOD2" ColumnName="KOD2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="STOK_AL" FunctionName="NetsisModel.Store.STOK_AL">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NetsisModel.STOK_AL_Result">
+                <ScalarProperty Name="STOK_KODU" ColumnName="STOK_KODU" />
+                <ScalarProperty Name="STOK_ADI" ColumnName="STOK_ADI" />
+                <ScalarProperty Name="CINSIYET_KOD" ColumnName="CINSIYET_KOD" />
+                <ScalarProperty Name="CINSIYET" ColumnName="CINSIYET" />
+                <ScalarProperty Name="ST_GRUP_KOD" ColumnName="ST_GRUP_KOD" />
+                <ScalarProperty Name="ST_GRUP" ColumnName="ST_GRUP" />
+                <ScalarProperty Name="YAS_ARALIK_KOD" ColumnName="YAS_ARALIK_KOD" />
+                <ScalarProperty Name="YAS_ARALIK" ColumnName="YAS_ARALIK" />
+                <ScalarProperty Name="RENK" ColumnName="RENK" />
+                <ScalarProperty Name="NUMARA" ColumnName="NUMARA" />
+                <ScalarProperty Name="MALZEME_KOD" ColumnName="MALZEME_KOD" />
+                <ScalarProperty Name="MALZEME" ColumnName="MALZEME" />
+                <ScalarProperty Name="MALZEME_2" ColumnName="MALZEME_2" />
+                <ScalarProperty Name="MALZEME_OZ" ColumnName="MALZEME_OZ" />
+                <ScalarProperty Name="DOKU" ColumnName="DOKU" />
+                <ScalarProperty Name="TIP_KOD" ColumnName="TIP_KOD" />
+                <ScalarProperty Name="TIP" ColumnName="TIP" />
+                <ScalarProperty Name="TIP_2_KOD" ColumnName="TIP_2_KOD" />
+                <ScalarProperty Name="TIP_2" ColumnName="TIP_2" />
+                <ScalarProperty Name="ALIS_FIYATI" ColumnName="ALIS_FIYATI" />
+                <ScalarProperty Name="BAKIYE" ColumnName="BAKIYE" />
+                <ScalarProperty Name="SATIS_FIYATI" ColumnName="SATIS_FIYATI" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="STOK_AL_CINS" FunctionName="NetsisModel.Store.STOK_AL_CINS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NetsisModel.STOK_AL_CINS_Result">
+                <ScalarProperty Name="STOK_KODU" ColumnName="STOK_KODU" />
+                <ScalarProperty Name="STOK_ADI" ColumnName="STOK_ADI" />
+                <ScalarProperty Name="CINSIYET_KOD" ColumnName="CINSIYET_KOD" />
+                <ScalarProperty Name="CINSIYET" ColumnName="CINSIYET" />
+                <ScalarProperty Name="ST_GRUP_KOD" ColumnName="ST_GRUP_KOD" />
+                <ScalarProperty Name="ST_GRUP" ColumnName="ST_GRUP" />
+                <ScalarProperty Name="YAS_ARALIK_KOD" ColumnName="YAS_ARALIK_KOD" />
+                <ScalarProperty Name="YAS_ARALIK" ColumnName="YAS_ARALIK" />
+                <ScalarProperty Name="RENK" ColumnName="RENK" />
+                <ScalarProperty Name="NUMARA" ColumnName="NUMARA" />
+                <ScalarProperty Name="MALZEME_KOD" ColumnName="MALZEME_KOD" />
+                <ScalarProperty Name="MALZEME" ColumnName="MALZEME" />
+                <ScalarProperty Name="MALZEME_2" ColumnName="MALZEME_2" />
+                <ScalarProperty Name="MALZEME_OZ" ColumnName="MALZEME_OZ" />
+                <ScalarProperty Name="DOKU" ColumnName="DOKU" />
+                <ScalarProperty Name="TIP_KOD" ColumnName="TIP_KOD" />
+                <ScalarProperty Name="TIP" ColumnName="TIP" />
+                <ScalarProperty Name="TIP_2_KOD" ColumnName="TIP_2_KOD" />
+                <ScalarProperty Name="TIP_2" ColumnName="TIP_2" />
+                <ScalarProperty Name="ALIS_FIYATI" ColumnName="ALIS_FIYATI" />
+                <ScalarProperty Name="BAKIYE" ColumnName="BAKIYE" />
+                <ScalarProperty Name="SATIS_FIYATI" ColumnName="SATIS_FIYATI" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="STOK_DUS" FunctionName="NetsisModel.Store.STOK_DUS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NetsisModel.STOK_DUS_Result">
+                <ScalarProperty Name="STOK_KODU" ColumnName="STOK_KODU" />
+                <ScalarProperty Name="STOK_ADI" ColumnName="STOK_ADI" />
+                <ScalarProperty Name="CINSIYET_KOD" ColumnName="CINSIYET_KOD" />
+                <ScalarProperty Name="CINSIYET" ColumnName="CINSIYET" />
+                <ScalarProperty Name="ST_GRUP_KOD" ColumnName="ST_GRUP_KOD" />
+                <ScalarProperty Name="ST_GRUP" ColumnName="ST_GRUP" />
+                <ScalarProperty Name="YAS_ARALIK_KOD" ColumnName="YAS_ARALIK_KOD" />
+                <ScalarProperty Name="YAS_ARALIK" ColumnName="YAS_ARALIK" />
+                <ScalarProperty Name="RENK" ColumnName="RENK" />
+                <ScalarProperty Name="NUMARA" ColumnName="NUMARA" />
+                <ScalarProperty Name="MALZEME_KOD" ColumnName="MALZEME_KOD" />
+                <ScalarProperty Name="MALZEME" ColumnName="MALZEME" />
+                <ScalarProperty Name="MALZEME_2" ColumnName="MALZEME_2" />
+                <ScalarProperty Name="MALZEME_OZ" ColumnName="MALZEME_OZ" />
+                <ScalarProperty Name="DOKU" ColumnName="DOKU" />
+                <ScalarProperty Name="TIP_KOD" ColumnName="TIP_KOD" />
+                <ScalarProperty Name="TIP" ColumnName="TIP" />
+                <ScalarProperty Name="TIP_2_KOD" ColumnName="TIP_2_KOD" />
+                <ScalarProperty Name="TIP_2" ColumnName="TIP_2" />
+                <ScalarProperty Name="ALIS_FIYATI" ColumnName="ALIS_FIYATI" />
+                <ScalarProperty Name="BAKIYE" ColumnName="BAKIYE" />
+                <ScalarProperty Name="SATIS_FIYATI" ColumnName="SATIS_FIYATI" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CARI_EKLE" FunctionName="NetsisModel.Store.CARI_EKLE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NetsisModel.CARI_EKLE_Result">
+                <ScalarProperty Name="SUBE_KODU" ColumnName="SUBE_KODU" />
+                <ScalarProperty Name="ISLETME_KODU" ColumnName="ISLETME_KODU" />
+                <ScalarProperty Name="CARI_KOD" ColumnName="CARI_KOD" />
+                <ScalarProperty Name="CARI_TEL" ColumnName="CARI_TEL" />
+                <ScalarProperty Name="CARI_IL" ColumnName="CARI_IL" />
+                <ScalarProperty Name="ULKE_KODU" ColumnName="ULKE_KODU" />
+                <ScalarProperty Name="CARI_ISIM" ColumnName="CARI_ISIM" />
+                <ScalarProperty Name="CARI_TIP" ColumnName="CARI_TIP" />
+                <ScalarProperty Name="GRUP_KODU" ColumnName="GRUP_KODU" />
+                <ScalarProperty Name="RAPOR_KODU1" ColumnName="RAPOR_KODU1" />
+                <ScalarProperty Name="RAPOR_KODU2" ColumnName="RAPOR_KODU2" />
+                <ScalarProperty Name="RAPOR_KODU3" ColumnName="RAPOR_KODU3" />
+                <ScalarProperty Name="RAPOR_KODU4" ColumnName="RAPOR_KODU4" />
+                <ScalarProperty Name="RAPOR_KODU5" ColumnName="RAPOR_KODU5" />
+                <ScalarProperty Name="CARI_ADRES" ColumnName="CARI_ADRES" />
+                <ScalarProperty Name="CARI_ILCE" ColumnName="CARI_ILCE" />
+                <ScalarProperty Name="VERGI_DAIRESI" ColumnName="VERGI_DAIRESI" />
+                <ScalarProperty Name="VERGI_NUMARASI" ColumnName="VERGI_NUMARASI" />
+                <ScalarProperty Name="FAX" ColumnName="FAX" />
+                <ScalarProperty Name="POSTAKODU" ColumnName="POSTAKODU" />
+                <ScalarProperty Name="DETAY_KODU" ColumnName="DETAY_KODU" />
+                <ScalarProperty Name="NAKLIYE_KATSAYISI" ColumnName="NAKLIYE_KATSAYISI" />
+                <ScalarProperty Name="RISK_SINIRI" ColumnName="RISK_SINIRI" />
+                <ScalarProperty Name="TEMINATI" ColumnName="TEMINATI" />
+                <ScalarProperty Name="CARISK" ColumnName="CARISK" />
+                <ScalarProperty Name="CCRISK" ColumnName="CCRISK" />
+                <ScalarProperty Name="SARISK" ColumnName="SARISK" />
+                <ScalarProperty Name="SCRISK" ColumnName="SCRISK" />
+                <ScalarProperty Name="CM_BORCT" ColumnName="CM_BORCT" />
+                <ScalarProperty Name="CM_ALACT" ColumnName="CM_ALACT" />
+                <ScalarProperty Name="CM_RAP_TARIH" ColumnName="CM_RAP_TARIH" />
+                <ScalarProperty Name="KOSULKODU" ColumnName="KOSULKODU" />
+                <ScalarProperty Name="ISKONTO_ORANI" ColumnName="ISKONTO_ORANI" />
+                <ScalarProperty Name="VADE_GUNU" ColumnName="VADE_GUNU" />
+                <ScalarProperty Name="LISTE_FIATI" ColumnName="LISTE_FIATI" />
+                <ScalarProperty Name="ACIK1" ColumnName="ACIK1" />
+                <ScalarProperty Name="ACIK2" ColumnName="ACIK2" />
+                <ScalarProperty Name="ACIK3" ColumnName="ACIK3" />
+                <ScalarProperty Name="M_KOD" ColumnName="M_KOD" />
+                <ScalarProperty Name="DOVIZ_TIPI" ColumnName="DOVIZ_TIPI" />
+                <ScalarProperty Name="DOVIZ_TURU" ColumnName="DOVIZ_TURU" />
+                <ScalarProperty Name="HESAPTUTMASEKLI" ColumnName="HESAPTUTMASEKLI" />
+                <ScalarProperty Name="DOVIZLIMI" ColumnName="DOVIZLIMI" />
+                <ScalarProperty Name="UPDATE_KODU" ColumnName="UPDATE_KODU" />
+                <ScalarProperty Name="PLASIYER_KODU" ColumnName="PLASIYER_KODU" />
+                <ScalarProperty Name="LOKALDEPO" ColumnName="LOKALDEPO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="WEB" ColumnName="WEB" />
+                <ScalarProperty Name="KURFARKIBORC" ColumnName="KURFARKIBORC" />
+                <ScalarProperty Name="KURFARKIALAC" ColumnName="KURFARKIALAC" />
+                <ScalarProperty Name="S_YEDEK1" ColumnName="S_YEDEK1" />
+                <ScalarProperty Name="S_YEDEK2" ColumnName="S_YEDEK2" />
+                <ScalarProperty Name="F_YEDEK1" ColumnName="F_YEDEK1" />
+                <ScalarProperty Name="F_YEDEK2" ColumnName="F_YEDEK2" />
+                <ScalarProperty Name="C_YEDEK1" ColumnName="C_YEDEK1" />
+                <ScalarProperty Name="C_YEDEK2" ColumnName="C_YEDEK2" />
+                <ScalarProperty Name="B_YEDEK1" ColumnName="B_YEDEK1" />
+                <ScalarProperty Name="I_YEDEK1" ColumnName="I_YEDEK1" />
+                <ScalarProperty Name="L_YEDEK1" ColumnName="L_YEDEK1" />
+                <ScalarProperty Name="FIYATGRUBU" ColumnName="FIYATGRUBU" />
+                <ScalarProperty Name="KAYITYAPANKUL" ColumnName="KAYITYAPANKUL" />
+                <ScalarProperty Name="KAYITTARIHI" ColumnName="KAYITTARIHI" />
+                <ScalarProperty Name="DUZELTMEYAPANKUL" ColumnName="DUZELTMEYAPANKUL" />
+                <ScalarProperty Name="DUZELTMETARIHI" ColumnName="DUZELTMETARIHI" />
+                <ScalarProperty Name="ODEMETIPI" ColumnName="ODEMETIPI" />
+                <ScalarProperty Name="ONAYTIPI" ColumnName="ONAYTIPI" />
+                <ScalarProperty Name="ONAYNUM" ColumnName="ONAYNUM" />
+                <ScalarProperty Name="MUSTERIBAZIKDV" ColumnName="MUSTERIBAZIKDV" />
+                <ScalarProperty Name="AGIRLIK_ISK" ColumnName="AGIRLIK_ISK" />
+                <ScalarProperty Name="CARI_TEL2" ColumnName="CARI_TEL2" />
+                <ScalarProperty Name="CARI_TEL3" ColumnName="CARI_TEL3" />
+                <ScalarProperty Name="FAX2" ColumnName="FAX2" />
+                <ScalarProperty Name="GSM1" ColumnName="GSM1" />
+                <ScalarProperty Name="GSM2" ColumnName="GSM2" />
+                <ScalarProperty Name="GEKAPHESAPLANMASIN" ColumnName="GEKAPHESAPLANMASIN" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
