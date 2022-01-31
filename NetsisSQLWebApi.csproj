@@ -85,6 +85,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="NetsisConnection.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -162,7 +163,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="App_Start\" />
-    <Folder Include="Content\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <PropertyGroup>
